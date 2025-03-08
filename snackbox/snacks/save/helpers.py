@@ -7,15 +7,13 @@ from git import Repo
 
 
 class BaseTestRunner(ABC):
-
     @abstractmethod
     def run_tests():
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 class PytestTestRunner(BaseTestRunner):
-
-    def __init__(self, tests_dir: Path = Path(".")):
+    def __init__(self, tests_dir: Path = Path()):
         self.__tests_dir = tests_dir
 
     def run_tests(self) -> bool:
@@ -26,12 +24,11 @@ class PytestTestRunner(BaseTestRunner):
 class BaseGitCommmitter(ABC):
     @abstractmethod
     def commit(self):
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 class GitCommitter(BaseGitCommmitter):
-
-    def __init__(self, repo_path: Path = Path(".")):
+    def __init__(self, repo_path: Path = Path()):
         self.__repo = Repo(repo_path, search_parent_directories=True)
 
     def commit(self) -> None:

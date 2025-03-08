@@ -13,3 +13,9 @@ dependencies = [
 
 [project.scripts]
 snack = "snackbox.main:app"
+
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.10",
+]

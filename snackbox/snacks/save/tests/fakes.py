@@ -2,7 +2,6 @@ from snackbox.snacks.save.save import BaseGitCommmitter, BaseTestRunner
 
 
 class FakeTestRunner(BaseTestRunner):
-
     def __init__(self, passes: bool):
         self.__passes = passes
 
@@ -13,7 +12,6 @@ class FakeTestRunner(BaseTestRunner):
 
 
 class FakeGitCommitter(BaseGitCommmitter):
-
     def __init__(self):
         self.committed = False
 
