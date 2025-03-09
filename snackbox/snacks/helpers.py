@@ -21,21 +21,30 @@ class PytestTestRunner(BaseTestRunner):
         return result == 0
 
 
-class BaseGitCommmitter(ABC):
+class BaseGitWrapper(ABC):
     @abstractmethod
     def commit(self):
         raise NotImplementedError
 
+    @abstractmethod
+    def init(self):
+        raise NotImplementedError
 
-class GitCommitter(BaseGitCommmitter):
-    def __init__(self, repo_path: Path = Path()):
-        self.__repo = Repo(repo_path, search_parent_directories=True)
+
+class GitWrapper(BaseGitWrapper):
+    def __init__(self, repo_path: Path = Path(".")):
+        self.__repo_path = repo_path
 
     def commit(self) -> None:
-        self.__repo.git.add(all=True)
+        repo = Repo(self.__repo_path, search_parent_directories=True)
+        repo.git.add(all=True)
 
-        if self.__repo.is_dirty():
+        if repo.is_dirty():
             logging.info("Committing changes")
-            self.__repo.index.commit("Auto commit")
+            repo.index.commit("Auto commit")
         else:
             logging.info("No changes to commit")
+
+    def init(self) -> None:
+        Repo.init(self.__repo_path)
+        logging.info("Initialized git repo")

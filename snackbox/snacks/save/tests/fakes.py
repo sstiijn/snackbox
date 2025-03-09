@@ -1,4 +1,4 @@
-from snackbox.snacks.save.save import BaseGitCommmitter, BaseTestRunner
+from snackbox.snacks.save.save import BaseGitWrapper, BaseTestRunner
 
 
 class FakeTestRunner(BaseTestRunner):
@@ -11,11 +11,16 @@ class FakeTestRunner(BaseTestRunner):
         return self.__passes
 
 
-class FakeGitCommitter(BaseGitCommmitter):
+class FakeGitWrapper(BaseGitWrapper):
     def __init__(self):
         self.committed = False
+        self.initialised = False
 
     def commit(self) -> None:
         """Fake implementation for unit tests"""
         print("Commit")
         self.committed = True
+
+    def init(self) -> None:
+        """Fake implementation for unit tests"""
+        self.initialised = True
