@@ -1,14 +1,14 @@
-from snackbox.snacks.save.helpers import (
-    BaseGitCommmitter,
+from snackbox.snacks.helpers import (
+    BaseGitWrapper,
     BaseTestRunner,
-    GitCommitter,
+    GitWrapper,
     PytestTestRunner,
 )
 
 
 def snack_save(
     test_runner: BaseTestRunner = PytestTestRunner(),
-    git_committer: BaseGitCommmitter = GitCommitter(),
+    git_committer: BaseGitWrapper = GitWrapper(),
 ):
     is_success = test_runner.run_tests()
     if is_success:
