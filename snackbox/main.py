@@ -19,8 +19,8 @@ def save() -> None:
 
 @app.command()
 def start(project_path: str) -> None:
-    gitwrapper = GitWrapper(Path(project_path))
-    snack_start(gitwrapper)
+    git_wrapper = GitWrapper(repo_path=Path(project_path))
+    snack_start(git_wrapper=git_wrapper, destination_path=Path(project_path))
 
 
 if __name__ == "__main__":
