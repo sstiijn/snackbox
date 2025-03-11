@@ -10,15 +10,14 @@ def snack_start(git_wrapper: BaseGitWrapper, destination_path: Path) -> None:
 
     git_wrapper.init()
 
+    subprocess.run(["uv", "init", f"{str(destination_path)}"], check=True)
+    os.remove(destination_path / Path("main.py"))
+
     ## copy file gitignore
     gitignore_template_path = Path(
         "snackbox/snacks/start/templates/gitignore_template.txt"
     )
     shutil.copy2(gitignore_template_path, destination_path / Path(".gitignore"))
-
-    subprocess.run(["uv", "init", f"{str(destination_path)}"], check=True)
-
-    os.remove(destination_path / Path("main.py"))
 
     os.mkdir(destination_path / destination_path.name)
 
