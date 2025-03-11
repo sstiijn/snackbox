@@ -7,7 +7,6 @@ from snackbox.snacks.helpers import BaseGitWrapper
 
 
 def snack_start(git_wrapper: BaseGitWrapper, destination_path: Path) -> None:
-
     git_wrapper.init()
 
     subprocess.run(["uv", "init", f"{str(destination_path)}"], check=True)
