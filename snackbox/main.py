@@ -23,5 +23,15 @@ def start(project_path: str) -> None:
     snack_start(git_wrapper=git_wrapper, destination_path=Path(project_path))
 
 
+@app.command()
+def autofix() -> None:
+    print("autofix")
+    print("ruff check --fix --fix-only --watch")
+    print('find . -name "*.py" | entr -d ruff format /_')
+    print("pytest-watch -- --testmon")
+    print("pytest-watch")
+    print("pytest-testmon")
+
+
 if __name__ == "__main__":
     app()
