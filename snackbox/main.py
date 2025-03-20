@@ -33,5 +33,16 @@ def autofix() -> None:
     print("pytest-testmon")
 
 
+@app.command()
+def kitty_shortcuts() -> None:
+    print("New window - cmd + ENTER")
+    print("Close window - ctrl+shift+w")
+    print()
+    print("Change layout - ctrl + shft + l")
+    print()
+    print("Next window - ctrl+shift+]")
+    print("Previous window - ctrl+shift+[")
+
+
 if __name__ == "__main__":
     app()
