@@ -43,6 +43,9 @@ def kitty() -> None:
     print()
     print("Next window - ctrl + shift + ]")
     print("Previous window - ctrl + shift + [")
+    print()
+    print("Move window forward - ctrl + shift + f")
+    print("Move window backward - ctrl + shift + b")
     print("-------------------------------------")
 
 
